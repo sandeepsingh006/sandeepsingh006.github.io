@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sandeep Singh - Principal Artist Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #0a0a0a;
+        }
+
+        header {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 50%, #c44569 100%);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="none"/><path d="M0 0L50 50L0 100L50 100L100 50L50 0Z" fill="rgba(255,255,255,0.05)"/></svg>');
+            opacity: 0.3;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            position: relative;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            opacity: 0.95;
+            position: relative;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            font-style: italic;
+            opacity: 0.9;
+            margin-top: 1rem;
+        }
+
+        .contact-info {
+            margin-top: 2rem;
+            font-size: 1rem;
+            position: relative;
+        }
+
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: opacity 0.3s;
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            margin-top: 0.5rem;
+        }
+
+        .contact-info a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        nav {
+            background: #1a1a1a;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav li {
+            margin: 0 1.5rem;
+        }
+
+        nav a {
+            color: #ff6b6b;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+            font-size: 1.1rem;
+        }
+
+        nav a:hover {
+            color: #ee5a6f;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        section {
+            background: #1a1a1a;
+            margin: 2rem 0;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(255,107,107,0.1);
+            border: 1px solid #2a2a2a;
+        }
+
+        h2 {
+            color: #ff6b6b;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            border-bottom: 3px solid #ff6b6b;
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            color: #ee5a6f;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #e0e0e0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-box {
+            background: linear-gradient(135deg, #ff6b6b 0%, #c44569 100%);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .stat-label {
+            color: rgba(255,255,255,0.9);
+            margin-top: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-category {
+            background: #0f0f0f;
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid #2a2a2a;
+        }
+
+        .skill-category h3 {
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            color: #e0e0e0;
+        }
+
+        .skill-bar {
+            height: 8px;
+            background: #2a2a2a;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #ff6b6b 0%, #ee5a6f 100%);
+            border-radius: 10px;
+            transition: width 1s ease;
+        }
+
+        .experience-item {
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #2a2a2a;
+        }
+
+        .experience-item:last-child {
+            border-bottom: none;
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .job-title {
+            font-size: 1.4rem;
+            color: #ff6b6b;
+            font-weight: 600;
+        }
+
+        .company {
+            color: #ee5a6f;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .date {
+            color: #888;
+            font-style: italic;
+        }
+
+        .experience-item ul {
+            margin-left: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .experience-item li {
+            margin-bottom: 0.8rem;
+            color: #d0d0d0;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .portfolio-item {
+            background: #0f0f0f;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #2a2a2a;
+            cursor: pointer;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(255,107,107,0.3);
+            border-color: #ff6b6b;
+        }
+
+        .portfolio-image {
+            width: 100%;
+            height: 280px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3rem;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-item:nth-child(1) .portfolio-image {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .portfolio-item:nth-child(2) .portfolio-image {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .portfolio-item:nth-child(3) .portfolio-image {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+
+        .portfolio-item:nth-child(4) .portfolio-image {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+
+        .portfolio-item:nth-child(5) .portfolio-image {
+            background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+        }
+
+        .portfolio-item:nth-child(6) .portfolio-image {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        }
+
+        .portfolio-tag {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0,0,0,0.7);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        .portfolio-content {
+            padding: 2rem;
+        }
+
+        .portfolio-content h3 {
+            margin-bottom: 0.5rem;
+            color: #ff6b6b;
+        }
+
+        .portfolio-content p {
+            color: #b0b0b0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .portfolio-meta {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-tag {
+            background: #2a2a2a;
+            color: #ff6b6b;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+        }
+
+        .education-item {
+            margin-bottom: 2rem;
+            background: #0f0f0f;
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid #ff6b6b;
+        }
+
+        .degree {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #ff6b6b;
+        }
+
+        .school {
+            color: #ee5a6f;
+            font-weight: 600;
+            margin-top: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .edu-details {
+            color: #888;
+            margin-top: 0.5rem;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .testimonial-card {
+            background: #0f0f0f;
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid #2a2a2a;
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 4rem;
+            color: #ff6b6b;
+            opacity: 0.2;
+        }
+
+        .testimonial-text {
+            color: #d0d0d0;
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-author {
+            color: #ff6b6b;
+            font-weight: 600;
+        }
+
+        .testimonial-role {
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        footer {
+            background: #0f0f0f;
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 3rem;
+            border-top: 2px solid #ff6b6b;
+        }
+
+        .social-links {
+            margin: 2rem 0;
+        }
+
+        .social-links a {
+            color: #ff6b6b;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #ee5a6f;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 2rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-size: 1.1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255,107,107,0.4);
+        }
+
+        .download-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin-left: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+
+            header p {
+                font-size: 1.1rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav li {
+                margin: 0.5rem 0;
+            }
+
+            section {
+                padding: 2rem 1.5rem;
+            }
+
+            .experience-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sandeep Singh</h1>
+        <p>Principal Artist | 2D/3D Artist | Visual Designer</p>
+        <p class="tagline">"Bringing imagination to life through exceptional digital artistry"</p>
+        <div class="contact-info">
+            <a href="mailto:Sandeepchambal005@gmail.com">✉ Email Me</a>
+            <a href="tel:+15069614320">📞 +1 (506) 961-4320</a>
+            <a>📍 Moncton, NB</a>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section id="about">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <p>I'm a passionate Principal Artist with over 5 years of experience creating stunning visual experiences for digital games and interactive media. My journey in digital art began with a fascination for bringing characters and worlds to life, and has evolved into a comprehensive skill set spanning 2D/3D art, animation, and visual design.</p>
+                <p style="margin-top: 1rem;">Throughout my career, I've had the privilege of working on diverse projects ranging from mobile games to large-scale digital campaigns. I specialize in creating compelling character designs, immersive environments, and polished UI elements that enhance user experience and engagement.</p>
+                <p style="margin-top: 1rem;">What drives me is the intersection of artistry and technology—the ability to craft visuals that not only look beautiful but also serve the game's narrative and mechanics. I'm equally comfortable working independently or collaborating with cross-functional teams, and I take pride in mentoring emerging artists to help them reach their full potential.</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-number">5+</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">25+</div>
+                    <div class="stat-label">Projects Completed</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">200+</div>
+                    <div class="stat-label">Assets Created</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">10+</div>
+                    <div class="stat-label">Tools Mastered</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio">
+            <h2>Featured Portfolio</h2>
+            <p style="color: #b0b0b0; margin-bottom: 2rem;">A showcase of my recent work across various digital art disciplines. Each project demonstrates my commitment to quality, creativity, and technical excellence.</p>
+            
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <span>Fantasy Character Series</span>
+                        <span class="portfolio-tag">2D/3D</span>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Mystic Warriors Collection</h3>
+                        <p>A complete character lineup for an RPG mobile game featuring 12 unique hero designs. Includes full modeling, texturing, rigging, and animation sets for combat and idle states.</p>
+                        <div class="portfolio-meta">
+                            <span class="meta-tag">Character Design</span>
+                            <span class="meta-tag">3D Modeling</span>
+                            <span class="meta-tag">Animation</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <span>Motion Graphics Campaign</span>
+                        <span class="portfolio-tag">2D Animation</span>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Digital Marketing Suite</h3>
+                        <p>Series of promotional animations created for product launches. Features dynamic typography, smooth transitions, and brand-aligned visual effects using After Effects and Spine.</p>
+                        <div class="portfolio-meta">
+                            <span class="meta-tag">Motion Graphics</span>
+                            <span class="meta-tag">Typography</span>
+                            <span class="meta-tag">VFX</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <span>Environment Art</span>
+                        <span class="portfolio-tag">3D</span>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Cyber City Environment</h3>
+                        <p>Futuristic cityscape environment with modular building system, optimized lighting, and atmospheric effects. Built for real-time rendering in Unity with performance optimization.</p>
+                        <div class="portfolio-meta">
+                            <span class="meta-tag">Environment Design</span>
+                            <span class="meta-tag">Unity</span>
+                            <span class="meta-tag">Lighting</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <span>Brand Identity Design</span>
+                        <span class="portfolio-tag">Graphic Design</span>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Game Studio Branding</h3>
+                        <p>Complete visual identity package including logo design, typography system, color palette, and brand guidelines for an indie game studio. Modern, memorable, and versatile across platforms.</p>
+                        <div class="portfolio-meta">
+                            <span class="meta-tag">Logo Design</span>
+                            <span class="meta-tag">Branding</span>
+                            <span class="meta-tag">Style Guide</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <span>Game UI/UX</span>
+                        <span class="portfolio-tag">Interface</span>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Mobile Game Interface</h3>
+                        <p>Complete UI/UX design for a puzzle game including menu systems, HUD elements, icons, and interactive components. Focused on intuitive navigation and visual appeal.</p>
+                        <div class="portfolio-meta">
+                            <span class="meta-tag">UI Design</span>
+                            <span class="meta-tag">UX</span>
+                            <span class="meta-tag">Icon Design</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <span>Concept Art Portfolio</span>
+                        <span class="portfolio-tag">Concept</span>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Creature & Vehicle Concepts</h3>
+                        <p>Original concept art exploring sci-fi creatures and vehicles. Includes detailed breakdowns, material studies, and turnaround sheets for production implementation.</p>
+                        <div class="portfolio-meta">
+                            <span class="meta-tag">Concept Art</span>
+                            <span class="meta-tag">Digital Painting</span>
+                            <span class="meta-tag">Visual Development</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h2>Professional Experience</h2>
+            
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="job-title">Principal Artist / Game Artist</div>
+                        <div class="company">UniSoft – India</div>
+                    </div>
+                    <div class="date">Jan 2019 – Dec 2023</div>
+                </div>
+                <ul>
+                    <li>Led visual development for 8+ mobile and web-based games, managing all art assets from initial concept through final production delivery</li>
+                    <li>Designed and implemented character pipelines that reduced production time by 30% while maintaining high quality standards</li>
+                    <li>Created comprehensive style guides and asset libraries used across multiple projects, ensuring visual consistency and brand alignment</li>
+                    <li>Collaborated directly with game designers, developers, and product managers to ensure art direction supported gameplay mechanics and user experience goals</li>
+                    <li>Mentored a team of 4 junior artists, providing feedback, technical training, and career development guidance</li>
+                    <li>Developed motion graphics and promotional materials for marketing campaigns that contributed to 40% increase in user engagement</li>
+                    <li>Established and optimized art workflows using Adobe Creative Suite, resulting in improved team efficiency and asset quality</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="job-title">2D/3D Artist</div>
+                        <div class="company">Freelance / Contract Projects</div>
+                    </div>
+                    <div class="date">Jan 2022 – Present</div>
+                </div>
+                <ul>
+                    <li>Successfully delivered 15+ freelance projects for clients across North America and India, ranging from character design to complete game environments</li>
+                    <li>Designed and animated characters, creatures, and NPCs using Unity, Spine, and Substance Painter with full animation cycles</li>
+                    <li>Created UI/UX assets and interactive elements for mobile games, focusing on intuitive design and visual appeal</li>
+                    <li>Developed concept art and visual development materials for indie game studios, helping define their visual identity</li>
+                    <li>Managed complete project lifecycles including client communication, milestone delivery, feedback iteration, and final asset handoff</li>
+                    <li>Maintained 100% on-time delivery record while consistently exceeding client expectations for quality and attention to detail</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2>Skills & Expertise</h2>
+            
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Art & Design</h3>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Character Design & Development</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>2D & 3D Animation</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Graphic Design & Illustration</span>
+                            <span>92%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 92%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Visual Storytelling</span>
+                            <span>88%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 88%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>UI/UX Design</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Software & Tools</h3>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Adobe Photoshop</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Adobe Illustrator</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>After Effects</span>
+                            <span>88%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 88%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Unity</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Spine & Painter</span>
+                            <span>82%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 82%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Professional Competencies</h3>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Project Leadership</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Team Collaboration</span>
+                            <span>93%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 93%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Mentoring & Training</span>
